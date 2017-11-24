@@ -79,6 +79,7 @@ int		read_loop(t_list *envp)
 			if (line_addchar(envp, &line, key))
 			{
 				line.str[line.i - 1] = '\0';
+				auto_completion(line.str);
 				launch_cmd(envp, line.str);
 				print_current(envp);
 				ft_bzero(line.str, sizeof(char) * line.len);

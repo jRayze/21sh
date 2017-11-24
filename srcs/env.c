@@ -137,7 +137,7 @@ void		env_arg(char **args, t_list *envp)
 		else
 			ft_lstiter(envp, print_envline);
 		launch_cmd(envp, tmp);
-		//free(tmp);
+		free(tmp);
 	}
 }
 
@@ -147,9 +147,6 @@ void		env(t_list *envp, char **args)
 	t_envnode	node;
 
 	env_cpy = ft_lstnew(NULL, 0);
-	//node.name = NULL;
-	//node.info = NULL;
-	//env_cpy->next = ft_lstnew(&node, sizeof(node));
 	if (*args == NULL)
 		ft_lstiter(envp, print_envline);
 	else

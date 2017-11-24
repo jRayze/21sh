@@ -73,6 +73,12 @@ typedef struct		s_echo_args
 	char			e:1;
 }					t_echo_args;
 
+typedef struct			s_readdir
+{
+	char				*file;
+	struct s_readdir	*next;
+}						t_readdir;
+
 void	pwd(t_list *envp, char **args);
 void	sh_unsetenv(t_list *envp, char **args);
 void	sh_setenv(t_list *envp, char **args);
@@ -108,3 +114,4 @@ char	get_key(t_strbuf *line);
 int		line_addchar(t_list *envp, t_strbuf *line, char c);
 size_t	get_prompt_len(t_strbuf *line);
 void	handle_signal(int signl);
+int     auto_completion(char *line);
