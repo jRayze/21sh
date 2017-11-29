@@ -6,7 +6,7 @@
 /*   By: jamerlin <jamerlin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/27 07:44:16 by gmonein           #+#    #+#             */
-/*   Updated: 2017/11/09 11:59:49 by jamerlin         ###   ########.fr       */
+/*   Updated: 2017/11/29 18:57:51 by jamerlin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,7 @@ typedef struct		s_echo_args
 typedef struct			s_readdir
 {
 	char				*file;
+	int					match;
 	struct s_readdir	*next;
 }						t_readdir;
 
