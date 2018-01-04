@@ -1,6 +1,6 @@
 #include "minishell.h"
 
-t_
+t_readdir 
 
 void    print_match(t_readdir *list)
 {
