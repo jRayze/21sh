@@ -1,0 +1,88 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   hash_functions.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jamerlin <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/04/19 15:22:50 by jamerlin          #+#    #+#             */
+/*   Updated: 2018/04/19 15:22:50 by jamerlin         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "../../inc/header.h"
+
+unsigned int		ft_pow(int x, unsigned int y)
+{
+	int temp;
+
+	if (y == 0)
+		return (1);
+	temp = ft_pow(x, y / 2);
+	if (y % 2 == 0)
+		return (temp * temp);
+	else
+		return (x * temp * temp);
+}
+
+unsigned int		hash_algo(char *key, int nb)
+{
+	int				i;
+	unsigned int	hash;
+
+	i = (-1);
+	hash = 0;
+	if (!(key) || nb <= 0)
+		return (0);
+	while (key[++i])
+		hash += key[i] * (unsigned int)ft_pow(5, i);
+	return (hash %= nb);
+}
+
+char				*get_hash_path(t_hash ***hash_addr, char *bin, t_sh *sh)
+{
+	unsigned int	id;
+	t_hash			*hash;
+	int				i;
+
+	i = -1;
+	if (!(*hash_addr) || !(**hash_addr) || !(bin))
+		return (NULL);
+	id = hash_algo(bin, sh->hash_size);
+	hash = (*hash_addr)[id];
+	while (++i <= (int)id)
+		if (!(*hash_addr)[i])
+			return (NULL);
+	while (hash)
+	{
+		if (hash && hash->bin != NULL)
+			if ((ft_strcmp(hash->bin, bin)) == 0)
+				return (hash->path);
+		hash = hash->next;
+	}
+	return (NULL);
+}
+
+void				hash_del(t_hash ***hash, t_sh *sh)
+{
+	unsigned int	i;
+	t_hash			*tmp;
+
+	i = (-1);
+	tmp = NULL;
+	while (++i < sh->hash_size)
+		if ((*(*hash + i)) != NULL)
+			while ((*(*hash + i)) != NULL)
+			{
+				if ((*(*hash + i))->bin != NULL)
+					ft_strdel(&((*(*hash + i))->bin));
+				if ((*(*hash + i))->path != NULL)
+					ft_strdel(&((*(*hash + i))->path));
+				tmp = (*(*hash + i));
+				(*(*hash + i)) = (*(*hash + i))->next;
+				if (tmp != NULL)
+					ft_memdel((void **)&tmp);
+			}
+	ft_memdel((void **)hash);
+	sh->hash_size = 0;
+}

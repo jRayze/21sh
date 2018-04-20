@@ -1,0 +1,38 @@
+BUILTIN(1)			  42sh Manual			    BUILTIN(1)
+
+
+
+NAME
+       unsetenv
+
+
+SYNOPSIS
+       unsetenv [KEY ...] - remove variables from environment
+
+
+DESCRIPTION
+       The  unset utility remove variables from the environment. Multiple var-
+       -iables can be specified in one command. If no  argument  is  provided,
+       the variables from the environment are print to the shell.
+
+
+OPTIONS
+       None.
+
+
+EXIT STATUS
+       This utility exits 0 on success and >0 if an error occurs.
+
+
+EXAMPLE
+       To remove the path and the user from the environment:
+
+       $unsetenv PATH USER
+
+
+AUTHOR
+       Jayson Merlini and Victor Boivin
+
+
+
+Version 1.0		       January 25, 2018 		    BUILTIN(1)

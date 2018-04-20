@@ -1,0 +1,43 @@
+BUILTIN(1)			  42sh Manual			    BUILTIN(1)
+
+
+
+NAME
+       unset -remove local variable from the local environement
+
+
+SYNOPSIS
+       unset [KEY ...] - remove variable from local environement
+
+
+DESCRIPTION
+       The  unset  utility show all local variables if  no  argument is speci-
+       fied. Otherwise, this utility removes the variables specified as  argu-
+       ments from the variable environnement.
+
+
+OPTIONS
+       None.
+
+
+EXIT STATUS
+       This utility exits 0 on success and >0 if an error occurs.
+
+
+EXAMPLE
+       To remove the variable PATH from the local environnement:
+
+       $unset PATH
+
+
+NOTE
+       Remove  a  variable from the local environement does not remove it from
+       the environment.
+
+
+AUTHOR
+       Jayson Merlini and Victor Boivin
+
+
+
+Version 1.0		       January 25, 2018 		    BUILTIN(1)

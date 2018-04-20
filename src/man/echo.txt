@@ -1,0 +1,44 @@
+BUILTIN(1)			  42sh Manual			    BUILTIN(1)
+
+
+
+NAME
+       echo - write arguments to the standard output
+
+
+SYNOPSIS
+       echo [-n] [args ...]
+
+
+DESCRIPTION
+       The echo utility	writes arguments on the standard output.
+
+       Quotes aren't printed and args have different behaviors according
+       to the quotes they have: none, simple or double.
+
+
+OPTIONS
+       -n Do not print the trailing newline character
+
+
+EXIT STATUS
+       The echo utility exits 0 on success and >0 if an error occurs.
+
+
+EXAMPLE
+       To print the sentence "Hello world!":
+
+       $echo "Hello world!"
+
+       or
+
+       $echo Hello world!
+
+
+
+AUTHOR
+       Jayson Merlini and Victor Boivin
+
+
+
+Version 1.0		       January 25, 2018 		    BUILTIN(1)
